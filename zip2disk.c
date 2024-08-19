@@ -158,9 +158,9 @@ read_sector (void)
       if (ch == EOF)
         goto Error;
       if (ch != esc) {
-        trackbuf[sec][count++] = (unsigned char) ch;
-        if (count > 256)
+        if (count > 255)
           goto Error;
+        trackbuf[sec][count++] = (unsigned char) ch;
       }
       else if (len >= 2) {
         /* escape character: get the number of repetitions */
